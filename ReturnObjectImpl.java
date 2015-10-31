@@ -18,7 +18,7 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	public ErrorMessage getError() {
 		if(!this.hasError() == false) {
-			return NO_ERROR;
+			return error.NO_ERROR;
 		} else {
 			return this.error;
 		}
