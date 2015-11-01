@@ -10,5 +10,7 @@ public class TestScript {
 		} else {
 			System.out.println("This structure is not empty.");
 		}
+		int size = array1.size();
+		System.out.println("Size: " + size);
 	}
 }
