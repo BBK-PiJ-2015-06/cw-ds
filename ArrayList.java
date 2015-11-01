@@ -83,7 +83,7 @@ public class ArrayList implements List {
 	public ReturnObject remove(int index) {
 		if(!this.hasIndexError(index)) {
 			ob.object = this.intArray[index];
-			int[] temp = new int[length - 1]
+			int[] temp = new int[length - 1];
 			if(this.intArray[index] == length - 1) {
 				for(int i = 0; i < temp.length; i++) {
 					temp[i] = this.intArray[i];
