@@ -5,5 +5,10 @@ public class TestScript {
 	}
 	public void launch() {
 		ArrayList array1 = new ArrayList();
+		if(array1.isEmpty()) {
+			System.out.println("This structure is empty.");
+		} else {
+			System.out.println("This structure is not empty.");
+		}
 	}
 }
