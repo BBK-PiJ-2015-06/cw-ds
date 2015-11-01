@@ -21,13 +21,13 @@
  */
 public class ArrayList implements List {
 	
-	private int[] intArray;
+	private Object[] list;
 	private int length;
-	private ReturnObject ob;
+	private ReturnObjectImpl ob;
 	
 	public ArrayList() {
 		this.length = 0;
-		this.intArray = new int[length];
+		this.list = new Object[length];
 	}
 	/**
 	 * Returns true if the list is empty, false otherwise. 
@@ -63,7 +63,7 @@ public class ArrayList implements List {
 	 */
 	public ReturnObject get(int index) {
 		if(!this.hasIndexError(index)) {
-			ob.object = this.intArray[index];
+			ob.setReturnValue(this.list[index]);
 		}
 		return ob;
 	}
@@ -82,21 +82,21 @@ public class ArrayList implements List {
 	 */
 	public ReturnObject remove(int index) {
 		if(!this.hasIndexError(index)) {
-			ob.object = this.intArray[index];
-			int[] temp = new int[length - 1];
-			if(this.intArray[index] == length - 1) {
+			ob.setReturnValue(this.list[index]);
+			Object[] temp = new Object[length - 1];
+			if(index == length - 1) {
 				for(int i = 0; i < temp.length; i++) {
-					temp[i] = this.intArray[i];
+					temp[i] = this.list[i];
 				}
 			} else {
 				for(int i = 0; i < index; i++) {
-					temp[i] = this.intArray[i];
+					temp[i] = this.list[i];
 				}
 				for(int i = index + 1; i < temp.length; i ++) {
-					temp[i - 1] = this.intArray[i];
+					temp[i - 1] = this.list[i];
 				}
 			}
-			this.intArray = temp;
+			this.list = temp;
 			this.length = this.length - 1;
 		}
 		return ob;
@@ -122,17 +122,17 @@ public class ArrayList implements List {
 	 */
 	public ReturnObject add(int index, Object item) {
 		if(item == null){
-			ob.error = INVALID_ARGUMENT;
+			ob.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if(!this.hasIndexError(index)) {
-			int[] temp = new int[length + 1];
+			Object[] temp = new Object[length + 1];
 			for(int i = 0; i < index; i++) {
-				temp[i] = this.intArray[i];
+				temp[i] = this.list[i];
 			}
 			temp[index] = item;
 			for(int i = index + 1; i < temp.length; i++) {
-				temp[i] = this.intArray[i - 1];
+				temp[i] = this.list[i - 1];
 			}
-			this.intArray = temp;
+			this.list = temp;
 			this.length++;
 		}
 		return ob;
@@ -151,14 +151,14 @@ public class ArrayList implements List {
 	 */
 	public ReturnObject add(Object item) {
 		if(item == null){
-			ob.error = INVALID_ARGUMENT;
+			ob.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
-			int[] temp = new int[length + 1];
-			for(int i = 0; i < intArray.length; i++) {
-				temp[i] = this.intArray[i];
+			Object[] temp = new Object[length + 1];
+			for(int i = 0; i < list.length; i++) {
+				temp[i] = this.list[i];
 			}
 			temp[temp.length - 1] = item;
-			this.intArray = temp;
+			this.list = temp;
 			this.length++;
 		}
 		return ob;
@@ -175,11 +175,11 @@ public class ArrayList implements List {
 	*         returns false if the index is valid
 	*/
 	private boolean hasIndexError(int index) {
-		if(this.intArray.isEmpty()) {
-			ob.error = EMPTY_STRUCTURE;
+		if(this.isEmpty()) {
+			ob.setError(ErrorMessage.EMPTY_STRUCTURE);
 			return true;
 		} else if(index < 0 || index >= this.length) {
-			ob.error = INDEX_OUT_OF_BOUNDS;
+			ob.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			return true;
 		} else {
 			return false;
