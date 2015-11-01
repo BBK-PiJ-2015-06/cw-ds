@@ -9,11 +9,6 @@ public class ArrayList implements List {
 		this.returnObject = new ReturnObjectImpl();
 	}
 	
-	/**
-	 * Returns true if the list is empty, false otherwise. 
-	 * 
-	 * @return true if the list is empty, false otherwise. 
-	 */
 	public boolean isEmpty() {
 		boolean output = false;
 		if(this.list.length == 0) {
@@ -22,13 +17,9 @@ public class ArrayList implements List {
 		return output;
 	}
 
-	/**
-	 * Returns the number of items currently in the list.
-	 * 
-	 * @return the number of items currently in the list
-	 */
 	public int size() {
-		return 0;
+		int output = this.list.length;
+		return output;
 	}
 
 	/**
@@ -42,6 +33,9 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObject get(int index) {
+		if(isIndexValid(index)) {
+			this.returnObject.setObject(this.list[index]);
+		}
 		return returnObject;
 	}
 
@@ -80,6 +74,19 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObject add(int index, Object item) {
+		if(item == null) {
+			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
+		} else if(isIndexValid(index)) {
+			Object[] temp = new Object[this.list.length + 1];
+			for(int i = 0; i < index; i++) {
+				temp[i] = this.list[i];
+			}
+			temp[index] = item;
+			for(int i = index + 1; i < temp.length; i++) {
+				temp[i] = this.list[i-1];
+			}
+			this.list = temp;
+		}
 		return returnObject;
 	}
 
@@ -95,6 +102,28 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObject add(Object item) {
+		if(item == null) {
+			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
+		} else {
+			Object[] temp = new Object[this.list.length + 1];
+			for(int i = 0; i < this.list.length; i++) {
+				temp[i] = this.list[i];
+			}
+			temp[temp.length - 1] = item;
+			this.list = temp;
+		}
 		return returnObject;
+	}	
+	
+	private boolean isIndexValid(int index) {
+		boolean output = true;
+		if(this.list.length == 0) {
+			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
+			output = false;
+		} else if(index >= this.list.length || index < 0) {
+			this.returnObject.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+			output = false;
+		}
+		return output;
 	}
 }
