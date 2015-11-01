@@ -62,11 +62,7 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObject get(int index) {
-		if(this.intArray.isEmpty()) {
-			ob.error = EMPTY_STRUCTURE;
-		} else if(index < 0 || index >= this.length) {
-			ob.error = INDEX_OUT_OF_BOUNDS;
-		} else {
+		if(!this.hasIndexError(index)) {
 			ob.object = this.intArray[index];
 		}
 		return ob;
@@ -85,11 +81,7 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObject remove(int index) {
-		if(this.intArray.isEmpty()) {
-			ob.error = EMPTY_STRUCTURE;
-		} else if(index < 0 || index >= this.length) {
-			ob.error = INDEX_OUT_OF_BOUNDS;
-		} else {
+		if(!this.hasIndexError(index)) {
 			ob.object = this.intArray[index];
 			int[] temp = new int[length - 1]
 			if(this.intArray[index] == length - 1) {
@@ -129,13 +121,9 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObject add(int index, Object item) {
-		if(this.intArray.isEmpty()) {
-			ob.error = EMPTY_STRUCTURE;
-		} else if(index < 0 || index >= this.length) {
-			ob.error = INDEX_OUT_OF_BOUNDS;
-		} else if(item == null){
+		if(item == null){
 			ob.error = INVALID_ARGUMENT;
-		} else {
+		} else if(!this.hasIndexError(index)) {
 			int[] temp = new int[length + 1];
 			for(int i = 0; i < index; i++) {
 				temp[i] = this.intArray[i];
@@ -162,11 +150,7 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObject add(Object item) {
-		if(this.intArray.isEmpty()) {
-			ob.error = EMPTY_STRUCTURE;
-		} else if(index < 0 || index >= this.length) {
-			ob.error = INDEX_OUT_OF_BOUNDS;
-		} else if(item == null){
+		if(item == null){
 			ob.error = INVALID_ARGUMENT;
 		} else {
 			int[] temp = new int[length + 1];
@@ -178,5 +162,27 @@ public class ArrayList implements List {
 			this.length++;
 		}
 		return ob;
+	}
+	
+	/**
+	* Checks those methods where an index is provided that the index is valid.
+	*
+	* Changes the error message only if the index is invalid.
+    *	
+	* @param index the position at which the item should be inserted in
+	*        the list
+	* @return returns true if the index is invalid
+	*         returns false if the index is valid
+	*/
+	private boolean hasIndexError(int index) {
+		if(this.intArray.isEmpty()) {
+			ob.error = EMPTY_STRUCTURE;
+			return true;
+		} else if(index < 0 || index >= this.length) {
+			ob.error = INDEX_OUT_OF_BOUNDS;
+			return true;
+		} else {
+			return false;
+		}
 	}
 }
