@@ -33,6 +33,7 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObjectImpl get(int index) {
+		this.returnObject = new ReturnObjectImpl();
 		if(isIndexValid(index)) {
 			this.returnObject.setObject(this.list[index]);
 		}
@@ -52,6 +53,7 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObjectImpl remove(int index) {
+		this.returnObject = new ReturnObjectImpl();
 		return returnObject;
 	}
 
@@ -74,6 +76,7 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObjectImpl add(int index, Object item) {
+		this.returnObject = new ReturnObjectImpl();
 		if(item == null) {
 			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else if(isIndexValid(index)) {
@@ -102,6 +105,7 @@ public class ArrayList implements List {
 	 *         or containing an appropriate error message otherwise
 	 */
 	public ReturnObjectImpl add(Object item) {
+		this.returnObject = new ReturnObjectImpl();
 		if(item == null) {
 			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
