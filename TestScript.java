@@ -5,6 +5,8 @@ public class TestScript {
 	}
 	public void launch() {
 		ArrayList array1 = new ArrayList();
+		ReturnObjectImpl a = array1.add("Hello");
+		a.printReturnObject();
 		if(array1.isEmpty()) {
 			System.out.println("This structure is empty.");
 		} else {
@@ -12,5 +14,7 @@ public class TestScript {
 		}
 		int size = array1.size();
 		System.out.println("Size: " + size);
+		a = array1.get(0);
+		a.printReturnObject();
 	}
 }
