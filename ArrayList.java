@@ -22,9 +22,11 @@
 public class ArrayList implements List {
 	
 	private int[] intArray;
+	private int length;
 	
 	public ArrayList() {
-		this.intArray = new int[1];
+		this.length = 1;
+		this.intArray = new int[length];
 	}
 	/**
 	 * Returns true if the list is empty, false otherwise. 
@@ -44,7 +46,9 @@ public class ArrayList implements List {
 	 * 
 	 * @return the number of items currently in the list
 	 */
-	public int size();
+	public int size() {
+		return this.length;
+	}
 
 	/**
 	 * Returns the element at the given position. 
