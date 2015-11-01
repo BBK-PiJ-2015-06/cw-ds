@@ -93,19 +93,19 @@ public class ArrayList implements List {
 			ob.object = this.intArray[index];
 			int[] temp = new int[length - 1]
 			if(this.intArray[index] == length - 1) {
-				for(int count = 0; count < temp.length; count++) {
-					temp[count] = this.intArray[count];
+				for(int i = 0; i < temp.length; i++) {
+					temp[i] = this.intArray[i];
 				}
 			} else {
-				for(int count = 0; count < index; count ++) {
-					temp[count] = this.intArray[count];
+				for(int i = 0; i < index; i++) {
+					temp[i] = this.intArray[i];
 				}
-				for(int count = index + 1; count < temp.length; count ++) {
-					temp[count - 1] = this.intArray[count];
+				for(int i = index + 1; i < temp.length; i ++) {
+					temp[i - 1] = this.intArray[i];
 				}
 			}
 			this.intArray = temp;
-			length = length - 1;
+			this.length = this.length - 1;
 		}
 		return ob;
 	}
@@ -128,7 +128,27 @@ public class ArrayList implements List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         or containing an appropriate error message otherwise
 	 */
-	public ReturnObject add(int index, Object item);
+	public ReturnObject add(int index, Object item) {
+		if(this.intArray.isEmpty()) {
+			ob.error = EMPTY_STRUCTURE;
+		} else if(index < 0 || index >= this.length) {
+			ob.error = INDEX_OUT_OF_BOUNDS;
+		} else if(item == null){
+			ob.error = INVALID_ARGUMENT;
+		} else {
+			int[] temp = new int[length + 1];
+			for(int i = 0; i < index; i++) {
+				temp[i] = this.intArray[i];
+			}
+			temp[index] = item;
+			for(int i = index + 1; i < temp.length; i++) {
+				temp[i] = this.intArray[i - 1];
+			}
+			this.intArray = temp;
+			this.length++;
+		}
+		return ob;
+	}
 
 	/**
 	 * Adds an element at the end of the list.
