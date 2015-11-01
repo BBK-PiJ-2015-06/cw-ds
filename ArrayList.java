@@ -23,9 +23,10 @@ public class ArrayList implements List {
 	
 	private int[] intArray;
 	private int length;
+	private ReturnObject ob;
 	
 	public ArrayList() {
-		this.length = 1;
+		this.length = 0;
 		this.intArray = new int[length];
 	}
 	/**
@@ -34,7 +35,7 @@ public class ArrayList implements List {
 	 * @return true if the list is empty, false otherwise. 
 	 */
 	public boolean isEmpty() {
-		if(this.intArray[0] == null) {
+		if(this.length == 0) {
 			return true;
 		} else {
 			return false;
@@ -61,18 +62,14 @@ public class ArrayList implements List {
 	 *         encapsulated in a ReturnObject
 	 */
 	public ReturnObject get(int index) {
-		Returnobject output = new ReturnObject();
-		if(this.intArray.isEmpty() {
-			output.error = EMPTY_STRUCTURE;
-			return output;
-		}
-		else if(index < 0 || index >= this.length) {
-			output.error = INDEX_OUT_OF_BOUNDS;
-			return output;
+		if(this.intArray.isEmpty()) {
+			ob.error = EMPTY_STRUCTURE;
+		} else if(index < 0 || index >= this.length) {
+			ob.error = INDEX_OUT_OF_BOUNDS;
 		} else {
-			output.object = this.intArray[index];
-			return output;
+			ob.object = this.intArray[index];
 		}
+		return ob;
 	}
 
 	/**
@@ -87,7 +84,31 @@ public class ArrayList implements List {
 	 * @return the element or an appropriate error message, 
 	 *         encapsulated in a ReturnObject
 	 */
-	public ReturnObject remove(int index);
+	public ReturnObject remove(int index) {
+		if(this.intArray.isEmpty()) {
+			ob.error = EMPTY_STRUCTURE;
+		} else if(index < 0 || index >= this.length) {
+			ob.error = INDEX_OUT_OF_BOUNDS;
+		} else {
+			ob.object = this.intArray[index];
+			int[] temp = new int[length - 1]
+			if(this.intArray[index] == length - 1) {
+				for(int count = 0; count < temp.length; count++) {
+					temp[count] = this.intArray[count];
+				}
+			} else {
+				for(int count = 0; count < index; count ++) {
+					temp[count] = this.intArray[count];
+				}
+				for(int count = index + 1; count < temp.length; count ++) {
+					temp[count - 1] = this.intArray[count];
+				}
+			}
+			this.intArray = temp;
+			length = length - 1;
+		}
+		return ob;
+	}
 
 	/**
 	 * Adds an element to the list, inserting it at the given
