@@ -27,4 +27,12 @@ public class ReturnObjectImpl implements ReturnObject {
 	public Object getReturnValue() {
 		return this.object;
 	}
+	
+	public void setError(ErrorMessage error) {
+		this.error = error;
+	}
+	
+	public void setReturnValue(Object object) {
+		this.object = object;
+	}
 }
