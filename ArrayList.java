@@ -161,5 +161,22 @@ public class ArrayList implements List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         or containing an appropriate error message otherwise
 	 */
-	public ReturnObject add(Object item);
+	public ReturnObject add(Object item) {
+		if(this.intArray.isEmpty()) {
+			ob.error = EMPTY_STRUCTURE;
+		} else if(index < 0 || index >= this.length) {
+			ob.error = INDEX_OUT_OF_BOUNDS;
+		} else if(item == null){
+			ob.error = INVALID_ARGUMENT;
+		} else {
+			int[] temp = new int[length + 1];
+			for(int i = 0; i < intArray.length; i++) {
+				temp[i] = this.intArray[i];
+			}
+			temp[temp.length - 1] = item;
+			this.intArray = temp;
+			this.length++;
+		}
+		return ob;
+	}
 }
