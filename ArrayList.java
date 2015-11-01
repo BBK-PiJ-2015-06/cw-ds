@@ -60,7 +60,20 @@ public class ArrayList implements List {
 	 * @return the element or an appropriate error message, 
 	 *         encapsulated in a ReturnObject
 	 */
-	public ReturnObject get(int index);
+	public ReturnObject get(int index) {
+		Returnobject output = new ReturnObject();
+		if(this.intArray.isEmpty() {
+			output.error = EMPTY_STRUCTURE;
+			return output;
+		}
+		else if(index < 0 || index >= this.length) {
+			output.error = INDEX_OUT_OF_BOUNDS;
+			return output;
+		} else {
+			output.object = this.intArray[index];
+			return output;
+		}
+	}
 
 	/**
 	 * Returns the elements at the given position and removes it
