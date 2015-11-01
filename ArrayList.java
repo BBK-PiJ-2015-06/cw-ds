@@ -3,7 +3,6 @@ public class ArrayList implements List {
 	private Object[] list;
 	private ReturnObjectImpl returnObject;
 	
-	
 	public ArrayList() {
 		this.list = new Object[0];
 		this.returnObject = new ReturnObjectImpl();
@@ -54,6 +53,17 @@ public class ArrayList implements List {
 	 */
 	public ReturnObjectImpl remove(int index) {
 		this.returnObject = new ReturnObjectImpl();
+		if(isIndexValid(index)) {
+			this.returnObject.setObject(this.list[index]);
+			Object[] temp = new Object[this.list.length - 1];
+			for(int i = 0; i < index; i++) {
+				temp[i] = this.list[i];
+			}
+			for(int i = (index + 1); i < temp.length; i++) {
+				temp[i - 1] = this.list[i];
+			}
+			this.list = temp;
+		}
 		return returnObject;
 	}
 
