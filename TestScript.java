@@ -16,5 +16,10 @@ public class TestScript {
 		System.out.println("Size: " + size);
 		a = array1.get(0);
 		a.printReturnObject();
+		a = array1.remove(0);
+		a.printReturnObject();
+		
+		size = array1.size();
+		System.out.println("New size: " + size);
 	}
 }
