@@ -36,8 +36,10 @@ public class ReturnObjectImpl implements ReturnObject {
 	}
 	
 	public void printReturnObject() {
-		System.out.println("Object: " + this.getReturnValue());
-		System.out.println("Error: " + this.getError());
+		System.out.println("");
+		System.out.println("ReturnObject Contents:");
+		System.out.println("Object - " + this.getReturnValue());
+		System.out.println("Error - " + this.getError());
 	}
 
 }
