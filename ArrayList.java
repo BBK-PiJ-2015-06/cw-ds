@@ -1,3 +1,13 @@
+/**
+ * An ArrayList is an implementation of the class List. It holds a 
+ * collection of objects within an array which expands and decreases
+ * in size when object are added or removed from the list. The 
+ * ArrayList cannot hold null objects but can contain a mixture of 
+ * other types of objects.
+ * 
+ * This class also makes use of the ReturnObject complex type to 
+ * return the objects and / or any appropriate error messages.
+ */
 public class ArrayList implements List {
 	
 	private Object[] list;
@@ -7,7 +17,12 @@ public class ArrayList implements List {
 		this.list = new Object[0];
 		this.returnObject = new ReturnObjectImpl();
 	}
-	
+
+	/**
+	 * Returns true if the list is empty, false otherwise. 
+	 * 
+	 * @return true if the list is empty, false otherwise. 
+	 */	
 	public boolean isEmpty() {
 		boolean output = false;
 		if(this.list.length == 0) {
@@ -16,6 +31,11 @@ public class ArrayList implements List {
 		return output;
 	}
 
+	/**
+	 * Returns the number of items currently in the list.
+	 * 
+	 * @return the number of items currently in the list
+	 */
 	public int size() {
 		int output = this.list.length;
 		return output;
@@ -129,6 +149,21 @@ public class ArrayList implements List {
 		return returnObject;
 	}	
 	
+	/**
+	* Checks whether the index value provided by the user is correct.
+	*
+	* Also checks whether an index is apropriate in a given situation
+	* by testing whether the current ArrayList is empty.
+	*
+	* An appropriate error is given to returnObject in each case. Also 
+	* returns true if the index is valid, or false if the index is invalid, 
+	* out of bounds or the list is empty.
+	*
+	* @param index the position within the list that is to be tested
+	*        for validity.
+	* @return returns true if the index is valid or returns false if the 
+	*         index is invalid, out of bounds or the list is empty.
+	*/
 	private boolean isIndexValid(int index) {
 		boolean output = true;
 		if(this.isEmpty()) {
@@ -141,6 +176,12 @@ public class ArrayList implements List {
 		return output;
 	}
 	
+	/**
+	* Prints on screen the objects contained within the list, each on a 
+	* separate line, in ascending order with respect to index.
+	*
+	* No objects or values are returned.
+	*/
 	public void printList() {
 		if(this.isEmpty()) {
 			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
@@ -150,5 +191,4 @@ public class ArrayList implements List {
 			}
 		}
 	}
-	
 }
