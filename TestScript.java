@@ -21,5 +21,6 @@ public class TestScript {
 		
 		size = array1.size();
 		System.out.println("New size: " + size);
+	
 	}
 }
