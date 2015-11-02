@@ -131,7 +131,7 @@ public class ArrayList implements List {
 	
 	private boolean isIndexValid(int index) {
 		boolean output = true;
-		if(this.list.length == 0) {
+		if(this.isEmpty()) {
 			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
 			output = false;
 		} else if(index >= this.list.length || index < 0) {
