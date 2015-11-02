@@ -141,4 +141,14 @@ public class ArrayList implements List {
 		return output;
 	}
 	
+	public void printList() {
+		if(this.isEmpty()) {
+			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+			for(int i = 0; i < this.list.length; i++) {
+				System.out.println(this.list[i]);
+			}
+		}
+	}
+	
 }
