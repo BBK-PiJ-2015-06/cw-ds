@@ -17,6 +17,16 @@ public class ArrayList implements List {
 		this.list = new Object[0];
 		this.returnObject = new ReturnObjectImpl();
 	}
+	
+	public ArrayList(int size) {
+		this.list = new Object[size];
+		for(int i = 0; i < size; i++) {
+			System.out.println("Please provide object for index " + i + ": " );
+			Object ob = System.console().readLine();
+			this.list[i] = ob;
+		}
+		this.returnObject = new ReturnObjectImpl();
+	}
 
 	/**
 	 * Returns true if the list is empty, false otherwise. 
