@@ -18,6 +18,7 @@ public class LinkedList implements List {
 		int count = 0;
 		ObjectNode temp = this.listStart;
 		if(!this.isEmpty()) {
+			count = 1;
 			while(temp.getNext() != null) {
 				count++;
 				temp = temp.getNext();
@@ -49,7 +50,7 @@ public class LinkedList implements List {
 			for(int i = 0; i < (index - 1); i++) {
 				temp = temp.getNext();
 			}
-			output.setObject(temp.getNext());
+			output.setObject(temp.getNext().getObject());
 			temp.setNext(temp.getNext().getNext());
 		}
 		return output;
