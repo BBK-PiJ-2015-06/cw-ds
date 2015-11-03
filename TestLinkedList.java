@@ -34,4 +34,18 @@ public class TestLinkedList {
 		}
 	}
 	
+	@Test
+	public void testsSizeAfterAddingElementAndRemovingElement() {
+		list.add("Object");
+		assertEquals(1, list.size());
+		list.add("Object");
+		assertEquals(2, list.size());
+		list.remove(1);
+		assertEquals(1, list.size());
+		list.remove(0);
+		assertEquals(0, list.size());
+	}
+	
+	
+	
 }
