@@ -3,9 +3,35 @@ import static org.junit.Assert.*;
 
 public class TestLinkedList {
 	
+	private LinkedList list;
+	
+	@Before
+	public void initialise() {
+		list = new LinkedList();
+	}
+	
 	@Test
-	public void testsIsEmptyMethodWithEmptyStructure() {
-		LinkedList list = new LinkedList();
+	public void testsIsEmptyMethodWithEmptyList() {
 		assertTrue(list.isEmpty());
 	}
+	
+	@Test
+	public void testsIsEmptyMethodWithNonEmptyList() {
+		list.add("Hello");
+		assertFalse(list.isEmpty());
+	}
+	
+	@Test
+	public void testsSizeWithEmptyList() {
+		assertEquals(0, list.size());
+	}
+	
+	@Test
+	public void testsSizeWithNonEmptyList() {
+		for(int i = 1; i < 10; i++) {
+			list.add("Object");
+			assertEquals(i, list.size());
+		}
+	}
+	
 }
