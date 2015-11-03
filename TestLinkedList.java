@@ -45,7 +45,4 @@ public class TestLinkedList {
 		list.remove(0);
 		assertEquals(0, list.size());
 	}
-	
-	
-	
 }
