@@ -11,11 +11,9 @@
 public class ArrayList implements List {
 	
 	private Object[] list;
-	private ReturnObjectImpl returnObject;
 	
 	public ArrayList() {
 		this.list = new Object[0];
-		this.returnObject = new ReturnObjectImpl();
 	}
 	
 	public ArrayList(int size) {
@@ -25,7 +23,6 @@ public class ArrayList implements List {
 			Object ob = System.console().readLine();
 			this.list[i] = ob;
 		}
-		this.returnObject = new ReturnObjectImpl();
 	}
 
 	/**
@@ -61,12 +58,14 @@ public class ArrayList implements List {
 	 * @return the element or an appropriate error message, 
 	 *         encapsulated in a ReturnObject
 	 */
-	public ReturnObjectImpl get(int index) {
-		this.returnObject = new ReturnObjectImpl();
-		if(isIndexValid(index)) {
-			this.returnObject.setObject(this.list[index]);
+	public ReturnObject get(int index) {
+		ReturnObjectImpl output = new ReturnObjectImpl();
+		if(index < 0 || index >= this.size()) {
+			output.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			output.setObject(this.list[index]);
 		}
-		return returnObject;
+		return output;
 	}
 
 	/**
@@ -81,10 +80,12 @@ public class ArrayList implements List {
 	 * @return the element or an appropriate error message, 
 	 *         encapsulated in a ReturnObject
 	 */
-	public ReturnObjectImpl remove(int index) {
-		this.returnObject = new ReturnObjectImpl();
-		if(isIndexValid(index)) {
-			this.returnObject.setObject(this.list[index]);
+	public ReturnObject remove(int index) {
+		ReturnObjectImpl output = new ReturnObjectImpl();
+		if(index < 0 || index >= this.size()) {
+			output.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			output.setObject(this.list[index]);
 			Object[] temp = new Object[this.list.length - 1];
 			for(int i = 0; i < index; i++) {
 				temp[i] = this.list[i];
@@ -94,7 +95,7 @@ public class ArrayList implements List {
 			}
 			this.list = temp;
 		}
-		return returnObject;
+		return output;
 	}
 
 	/**
@@ -115,11 +116,14 @@ public class ArrayList implements List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         or containing an appropriate error message otherwise
 	 */
-	public ReturnObjectImpl add(int index, Object item) {
-		this.returnObject = new ReturnObjectImpl();
-		if(item == null) {
-			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
-		} else if(isIndexValid(index)) {
+	public ReturnObject add(int index, Object item) {
+		ReturnObjectImpl output = new ReturnObjectImpl();
+		if(index < 0 || index >= this.size()) {
+			output.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else if(item == null) {
+			output.setError(ErrorMessage.INVALID_ARGUMENT);
+		} else {
 			Object[] temp = new Object[this.list.length + 1];
 			for(int i = 0; i < index; i++) {
 				temp[i] = this.list[i];
@@ -130,7 +134,7 @@ public class ArrayList implements List {
 			}
 			this.list = temp;
 		}
-		return returnObject;
+		return output;
 	}
 
 	/**
@@ -144,10 +148,10 @@ public class ArrayList implements List {
 	 * @return an ReturnObject, empty if the operation is successful
 	 *         or containing an appropriate error message otherwise
 	 */
-	public ReturnObjectImpl add(Object item) {
-		this.returnObject = new ReturnObjectImpl();
+	public ReturnObject add(Object item) {
+		ReturnObjectImpl output = new ReturnObjectImpl();
 		if(item == null) {
-			this.returnObject.setError(ErrorMessage.INVALID_ARGUMENT);
+			output.setError(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			Object[] temp = new Object[this.list.length + 1];
 			for(int i = 0; i < this.list.length; i++) {
@@ -156,42 +160,7 @@ public class ArrayList implements List {
 			temp[temp.length - 1] = item;
 			this.list = temp;
 		}
-		return returnObject;
+		return output;
 	}	
 	
-	/**
-	* Checks whether the index value provided by the user is correct.
-	*
-	* Also returns true if the index is valid, or false if the index is 
-	* invalid, out of bounds or the list is empty.
-	*
-	* @param index the position within the list that is to be tested
-	*        for validity.
-	* @return returns true if the index is valid or returns false if the 
-	*         index is invalid, out of bounds or the list is empty.
-	*/
-	private boolean isIndexValid(int index) {
-		boolean output = true;
-		if(index >= this.list.length || index < 0) {
-			this.returnObject.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-			output = false;
-		}
-		return output;
-	}
-	
-	/**
-	* Prints on screen the objects contained within the list, each on a 
-	* separate line, in ascending order with respect to index.
-	*
-	* No objects or values are returned.
-	*/
-	public void printList() {
-		if(this.isEmpty()) {
-			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
-		} else {
-			for(int i = 0; i < this.list.length; i++) {
-				System.out.println(this.list[i]);
-			}
-		}
-	}
 }
