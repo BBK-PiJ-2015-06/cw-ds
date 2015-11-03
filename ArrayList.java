@@ -162,12 +162,8 @@ public class ArrayList implements List {
 	/**
 	* Checks whether the index value provided by the user is correct.
 	*
-	* Also checks whether an index is apropriate in a given situation
-	* by testing whether the current ArrayList is empty.
-	*
-	* An appropriate error is given to returnObject in each case. Also 
-	* returns true if the index is valid, or false if the index is invalid, 
-	* out of bounds or the list is empty.
+	* Also returns true if the index is valid, or false if the index is 
+	* invalid, out of bounds or the list is empty.
 	*
 	* @param index the position within the list that is to be tested
 	*        for validity.
@@ -176,10 +172,7 @@ public class ArrayList implements List {
 	*/
 	private boolean isIndexValid(int index) {
 		boolean output = true;
-		if(this.isEmpty()) {
-			this.returnObject.setError(ErrorMessage.EMPTY_STRUCTURE);
-			output = false;
-		} else if(index >= this.list.length || index < 0) {
+		if(index >= this.list.length || index < 0) {
 			this.returnObject.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 			output = false;
 		}
