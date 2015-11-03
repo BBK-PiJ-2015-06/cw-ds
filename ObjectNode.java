@@ -16,10 +16,6 @@ public class ObjectNode {
 		return this.next;
 	}
 	
-	public void setObject(Object object) {
-		this.object = object;
-	}
-	
 	public void setNext(ObjectNode nextObjectNode) {
 		this.next = nextObjectNode;
 	}
