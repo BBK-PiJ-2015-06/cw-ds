@@ -50,8 +50,13 @@ public class LinkedList implements List {
 			for(int i = 0; i < (index - 1); i++) {
 				temp = temp.getNext();
 			}
-			output.setObject(temp.getNext().getObject());
-			temp.setNext(temp.getNext().getNext());
+			if(this.listStart.getNext() == null) {
+				output.setObject(this.listStart);
+				this.listStart = null;
+			} else {
+				output.setObject(temp.getNext().getObject());
+				temp.setNext(temp.getNext().getNext());
+			}
 		}
 		return output;
 	}
