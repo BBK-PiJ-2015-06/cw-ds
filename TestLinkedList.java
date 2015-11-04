@@ -369,6 +369,7 @@ public class TestLinkedList {
 		assertEquals(null, list.get(2).getReturnValue());
 	}
 	
+	@Test
 	public void testsAddingNullElementsWithInvalidIndex() {
 		list.add("Object1");
 		list.add("Object2");
@@ -385,6 +386,7 @@ public class TestLinkedList {
 		assertEquals(null, list.get(2).getReturnValue());
 	}
 	
+	@Test
 	public void testsAddingNullElementsWithValidIndex() {
 		list.add("Object1");
 		list.add("Object2");
