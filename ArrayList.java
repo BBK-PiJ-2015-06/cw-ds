@@ -81,6 +81,10 @@ public class ArrayList implements List {
 			this.list = temp;
 		}
 		return output;
-	}	
+	}
+
+	public Object[] getList() {
+		return this.list;
+	}
 	
 }
