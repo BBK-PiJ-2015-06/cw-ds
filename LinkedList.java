@@ -103,4 +103,11 @@ public class LinkedList implements List {
 		return output;
 	}
 	
+	public ObjectNode getList() {
+		return this.listStart;
+	}
+	
+	public void setList(ObjectNode listStart) {
+		this.listStart = listStart;
+	}
 }

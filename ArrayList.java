@@ -87,4 +87,8 @@ public class ArrayList implements List {
 		return this.list;
 	}
 	
+	public void setList(Object[] list) {
+		this.list = list;
+	}
+	
 }
