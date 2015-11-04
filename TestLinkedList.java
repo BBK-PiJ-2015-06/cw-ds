@@ -317,4 +317,87 @@ public class TestLinkedList {
 		assertEquals("Object1", list.get(0).getReturnValue());
 		assertEquals("Object2", list.get(1).getReturnValue());
 	}
+	
+	@Test
+	public void testsAddingElementstoStartOfList() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.add(0, "Object0");
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.NO_ERROR;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(3, list.size());
+		assertEquals("Object0", list.get(0).getReturnValue());
+		assertEquals("Object1", list.get(1).getReturnValue());
+		assertEquals("Object2", list.get(2).getReturnValue());
+	}
+	
+	@Test
+	public void testsAddingElementstoMiddleOfList() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.add(1, "Object0");
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.NO_ERROR;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(3, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object0", list.get(1).getReturnValue());
+		assertEquals("Object2", list.get(2).getReturnValue());
+	}
+	
+	@Test
+	public void testsAddingElementsWithInvalidIndex() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.add(2, "Object0");
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(2, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object2", list.get(1).getReturnValue());
+		assertEquals(null, list.get(2).getReturnValue());
+	}
+	
+	public void testsAddingNullElementsWithInvalidIndex() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.add(2, null);
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(2, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object2", list.get(1).getReturnValue());
+		assertEquals(null, list.get(2).getReturnValue());
+	}
+	
+	public void testsAddingNullElementsWithValidIndex() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.add(1, null);
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.INVALID_ARGUMENT;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(2, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object2", list.get(1).getReturnValue());
+		assertEquals(null, list.get(2).getReturnValue());
+	}
 }
