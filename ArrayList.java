@@ -5,15 +5,6 @@ public class ArrayList implements List {
 	public ArrayList() {
 		this.list = new Object[0];
 	}
-	
-	public ArrayList(int size) {
-		this.list = new Object[size];
-		for(int i = 0; i < size; i++) {
-			System.out.println("Please provide object for index " + i + ": " );
-			Object ob = System.console().readLine();
-			this.list[i] = ob;
-		}
-	}
 
 	public boolean isEmpty() {
 		boolean output = false;
