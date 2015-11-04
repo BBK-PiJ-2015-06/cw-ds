@@ -289,5 +289,32 @@ public class TestLinkedList {
 		assertEquals("Object1", list.get(0).getReturnValue());
 		assertEquals("Object2", list.get(1).getReturnValue());
 	}
-
+	
+	@Test
+	public void testsAddingNullValuesToEmptyList() {
+		ReturnObject a = list.add(null);
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.INVALID_ARGUMENT;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(0, list.size());
+	}
+	
+	@Test
+	public void testsAddingNullValuesToEndOfExistingList() {
+		list.add("Object1");
+		ReturnObject a = list.add(null);
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.INVALID_ARGUMENT;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(1, list.size());
+		list.add("Object2");
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object2", list.get(1).getReturnValue());
+	}
 }
