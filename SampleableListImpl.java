@@ -21,8 +21,14 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 			newList.setList(this.getList());
 		} else {
 			Object[] temp = new Object[(size / 2) + (size % 2)];
-			for(int i = 0; i < size; i = i + 2) {
-				temp[i] = this.getList()[i];
+			int j = 0;
+			
+			// i initialised to 0.
+			// Assumes first, third, fifth items (as mentioned above) takes the literal
+			// first, third and fifth elements, NOT index 1, index 3, index 5...etc.
+			for(int i = 0; i < temp.length; i++) { 
+				temp[i] = this.getList()[j];
+				j = j + 2;
 			}
 			newList.setList(temp);
 		}
