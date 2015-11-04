@@ -45,4 +45,46 @@ public class TestLinkedList {
 		list.remove(0);
 		assertEquals(0, list.size());
 	}
+	
+	@Test
+	public void testsGetElementFromCorrectStartMiddleEndIndex() {
+		list.add("Object1");
+		list.add("Object2");
+		list.add("Object3");
+		list.add("Object4");
+		list.add("Object5");
+		ReturnObject a = list.get(0);
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		Object expected = "Object1";
+		ErrorMessage errorExpected = ErrorMessage.NO_ERROR;
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		a = list.get(2);
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		expected = "Object3";
+		errorExpected = ErrorMessage.NO_ERROR;
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		a = list.get(list.size() - 1);
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		expected = "Object5";
+		errorExpected = ErrorMessage.NO_ERROR;
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+	}
+	
+	@Test
+	public void testsGetMethodWithInvalidIndex() {
+		ReturnObject a = list.get(-1);
+		Object expected = null;
+		ErrorMessage errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);	
+	}
+	
 }
