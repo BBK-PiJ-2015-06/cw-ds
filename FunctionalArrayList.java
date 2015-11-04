@@ -56,4 +56,5 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 		}
 		return output;
 	}
+	
 }
