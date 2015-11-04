@@ -87,4 +87,207 @@ public class TestLinkedList {
 		assertEquals(errorExpected, errorOutput);	
 	}
 	
+	@Test
+	public void testsGetMethodWithOutOfBoundsIndex() {
+		list.add("Object1");
+		list.add("Object2");
+		ReturnObject a = list.get(2);
+		Object expected = null;
+		ErrorMessage errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);	
+	}
+	
+	@Test
+	public void testsRemovingElementFromStartOfList() {
+		list.add("Object1");
+		list.add("Object2");
+		list.add("Object3");
+		list.add("Object4");
+		list.add("Object5");
+		ReturnObject a = list.remove(0);
+		Object expected = "Object1";
+		ErrorMessage errorExpected = ErrorMessage.NO_ERROR;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		int expectedSize = 4;
+		int outputSize = list.size();
+		assertEquals(expectedSize, outputSize);
+		
+		a = list.get(0);
+		expected = "Object2";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(3);
+		expected = "Object5";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(4);
+		expected = null;
+		errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+	}
+	
+	@Test
+	public void testsRemovingElementFromMiddleOfList() {
+		list.add("Object1");
+		list.add("Object2");
+		list.add("Object3");
+		list.add("Object4");
+		list.add("Object5");
+		ReturnObject a = list.remove(2);
+		Object expected = "Object3";
+		ErrorMessage errorExpected = ErrorMessage.NO_ERROR;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		int expectedSize = 4;
+		int outputSize = list.size();
+		assertEquals(expectedSize, outputSize);
+		
+		a = list.get(0);
+		expected = "Object1";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(3);
+		expected = "Object5";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(4);
+		expected = null;
+		errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+	}
+	
+	@Test
+	public void testsRemovingElementFromEndOfList() {
+		list.add("Object1");
+		list.add("Object2");
+		list.add("Object3");
+		list.add("Object4");
+		list.add("Object5");
+		ReturnObject a = list.remove(list.size() - 1);
+		Object expected = "Object5";
+		ErrorMessage errorExpected = ErrorMessage.NO_ERROR;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		int expectedSize = 4;
+		int outputSize = list.size();
+		assertEquals(expectedSize, outputSize);
+		
+		a = list.get(0);
+		expected = "Object1";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(3);
+		expected = "Object4";
+		errorExpected = ErrorMessage.NO_ERROR;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		a = list.get(4);
+		expected = null;
+		errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+	}
+	
+	@Test
+	public void testsRemovingElementWhereOnlyOneElementRemains() {
+		list.add("Object1");
+		ReturnObject a = list.remove(0);
+		Object expected = "Object1";
+		ErrorMessage errorExpected = ErrorMessage.NO_ERROR;
+		Object output = a.getReturnValue();
+		ErrorMessage errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		int expectedSize = 0;
+		int outputSize = list.size();
+		assertEquals(expectedSize, outputSize);
+		
+		a = list.get(0);
+		expected = null;
+		errorExpected = ErrorMessage.INDEX_OUT_OF_BOUNDS;
+		output = a.getReturnValue();
+		errorOutput = a.getError();
+		assertEquals(expected, output);
+		assertEquals(errorExpected, errorOutput);
+		
+		assertTrue(list.isEmpty());
+		
+	}
+	
+	@Test
+	public void testsAddingAnElementToEmptyList() {
+		ReturnObject a = list.add("Object1");
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.NO_ERROR;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(1, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+	}
+	
+	@Test
+	public void testsAddingAnElementToTheEndOfExistingList() {
+		list.add("Object1");
+		ReturnObject a = list.add("Object2");
+		Object expected = null;
+		Object output = a.getReturnValue();
+		ErrorMessage expectedError = ErrorMessage.NO_ERROR;
+		ErrorMessage outputError = a.getError();
+		assertEquals(expected, output);
+		assertEquals(expectedError, outputError);
+		assertEquals(2, list.size());
+		assertEquals("Object1", list.get(0).getReturnValue());
+		assertEquals("Object2", list.get(1).getReturnValue());
+	}
+
 }
