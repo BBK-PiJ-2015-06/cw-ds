@@ -33,4 +33,10 @@ public class TestFunctionalArrayList {
 		assertEquals(expected, output);
 		assertEquals(expectedError, outputError);
 	}
+	
+	@Test 
+	public void testsRestMethodOnEmptyList() {
+		FunctionalList newList = list.rest();
+		assertEquals(0, newList.size());
+	}
 }
