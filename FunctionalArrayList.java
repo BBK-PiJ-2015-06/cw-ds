@@ -15,11 +15,11 @@
  */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	
-	private FunctionalArrayList functionalList;
+	private Object[] functionalList;
 	
 	public FunctionalArrayList() {
 		super();
-		this.functionalList = null;
+		this.functionalList = this.getList();
 	}
     /**
      * Returns the element at the beginning of the list. 
@@ -31,6 +31,11 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      */
     public ReturnObject head() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
+		if(this.isEmpty()) {
+			output.setError(ErrorMessage.EMPTY_STRUCTURE);
+		} else {
+			output.setObject(this.getList()[0]);
+		}
 		return output;
 	}
 
@@ -42,6 +47,10 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      * If the list is empty, another empty list is returned. 
      */
     public FunctionalList rest() {
-		return this.functionalList;
+		FunctionalArrayList output = new FunctionalArrayList();
+		for(int i = 0; i < output.size() - 1; i++) {
+			output.functionalList[i] = this.functionalList[i + 1];
+		}
+		return output;
 	}
 }
