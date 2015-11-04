@@ -15,11 +15,8 @@
  */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	
-	private Object[] functionalList;
-	
 	public FunctionalArrayList() {
 		super();
-		this.functionalList = this.getList();
 	}
     /**
      * Returns the element at the beginning of the list. 
@@ -49,7 +46,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
     public FunctionalList rest() {
 		FunctionalArrayList output = new FunctionalArrayList();
 		for(int i = 0; i < output.size() - 1; i++) {
-			output.functionalList[i] = this.functionalList[i + 1];
+			output.getList()[i] = this.getList()[i + 1];
 		}
 		return output;
 	}
