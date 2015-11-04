@@ -46,17 +46,19 @@ public class LinkedList implements List {
 		ObjectNode temp = this.listStart;
 		if(index < 0 || index >= this.size()) {
 			output.setError(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (index == 0) {
+			output.setObject(this.listStart.getObject());
+			if(this.listStart.getNext() == null) {
+				this.listStart = null;
+			} else {
+				this.listStart = temp.getNext();
+			}	
 		} else {
 			for(int i = 0; i < (index - 1); i++) {
 				temp = temp.getNext();
 			}
-			if(this.listStart.getNext() == null) {
-				output.setObject(this.listStart);
-				this.listStart = null;
-			} else {
-				output.setObject(temp.getNext().getObject());
-				temp.setNext(temp.getNext().getNext());
-			}
+			output.setObject(temp.getNext().getObject());
+			temp.setNext(temp.getNext().getNext());
 		}
 		return output;
 	}
