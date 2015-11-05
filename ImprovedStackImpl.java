@@ -110,9 +110,14 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 */
 	public void remove(Object object) {
 		if(!this.isEmpty()) {
-			for(int index = 0; index < this.size(); index++) {
+			int size = this.size();
+			int index = 0;
+			while(index < size) {
 				if(this.stackList.get(index).getReturnValue().equals(object)) {
 					this.stackList.remove(index);
+					size = size - 1;
+				} else {
+					index++;
 				}
 			}
 		}
