@@ -10,6 +10,9 @@ public class StackImpl extends AbstractStack {
 	 * @return true if the stack is empty, false otherwise. 
 	 */
 	public boolean isEmpty() {
+		if(this.isListNull()) {
+			return true;
+		}
 		boolean output = false;
 		if(this.internalList.isEmpty()) {
 			output = true;
@@ -23,7 +26,11 @@ public class StackImpl extends AbstractStack {
 	 * @return the number of items currently in the stack
 	 */
 	public int size() {
-		return this.internalList.size();
+		if(!this.isListNull()) {
+			return this.internalList.size();
+		} else {
+			return 0;
+		}
 	}
 
 	/**
@@ -32,7 +39,9 @@ public class StackImpl extends AbstractStack {
 	 * @param item the new item to be added
 	 */
 	public void push(Object item) {
-		this.internalList.add(item);
+		if(!this.isListNull()) {
+			this.internalList.add(item);
+		}
 	}
 
 	/**
@@ -44,7 +53,7 @@ public class StackImpl extends AbstractStack {
 	 */
 	public ReturnObject top() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
-		if(this.isEmpty()) {
+		if(this.isEmpty() || this.isListNull()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			output.setObject(this.internalList.get(this.size() - 1).getReturnValue());
@@ -61,7 +70,7 @@ public class StackImpl extends AbstractStack {
 	 */
 	public ReturnObject pop() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
-		if(this.isEmpty()) {
+		if(this.isEmpty() || this.isListNull()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			output.setObject(this.internalList.get(this.size() - 1).getReturnValue());
@@ -70,4 +79,11 @@ public class StackImpl extends AbstractStack {
 		return output;
 	}
 	
+	public boolean isListNull() {
+		boolean output = false;
+		if(this.internalList == null) {
+			output = true;
+		}
+		return output;
+	}
 }
