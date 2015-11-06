@@ -6,7 +6,7 @@
  *
  * These additional methods enable the first element (index 0) 
  * and / or the body (index 1, index 2...index(size - 1)) to be 
- * retrieved with no chnage being inflicted upon the original structure.
+ * retrieved with no change being inflicted upon the original structure.
  */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	
