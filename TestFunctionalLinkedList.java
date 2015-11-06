@@ -79,4 +79,27 @@ public class TestFunctionalLinkedList {
 		assertEquals(3, list.size());
 		
 	}
+	
+	@Test
+	public void testsEmptyListIndependance() {
+		FunctionalList newList = list.rest();
+		newList.add("test");
+		assertEquals(1, newList.size());
+		assertEquals(0, list.size());
+		
+	}
+	
+	@Test
+	public void testsOriginalListIndependance() {
+		list.add(1);
+		list.add(2);
+		FunctionalList newList = list.rest();
+		assertEquals(2, list.size());
+		assertEquals(1, newList.size());
+		newList.add(2);
+		newList.add(3);
+		list.remove(0);
+		assertEquals(1, list.size());
+		assertEquals(3, newList.size());
+	}
 }
