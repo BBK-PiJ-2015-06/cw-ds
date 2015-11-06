@@ -73,5 +73,10 @@ public class TestFunctionalLinkedList {
 		assertEquals("Object2", list.get(1).getReturnValue());
 		assertEquals("Object3", list.get(2).getReturnValue());
 		assertEquals(null, list.get(3).getReturnValue());
+		
+		newList.add("Test");
+		assertEquals(3, newList.size());
+		assertEquals(3, list.size());
+		
 	}
 }
