@@ -36,4 +36,20 @@ public class TestSampleableListImpl {
 		assertEquals(5, list.size()); //Tests that original list is not changed.
 		assertEquals(4, newList.size());
 	}
+	
+	@Test
+	public void testsSampleIndependance() {
+		list.add(1);
+		list.add(2);
+		SampleableList newList = list.sample();
+		newList.add(2);
+		assertEquals(2, list.size());
+		assertEquals(2, newList.size());
+		newList.remove(0);
+		list.remove(0);
+		list.remove(0);
+		assertEquals(0, list.size());
+		assertEquals(1, newList.size());
+		assertEquals(2, newList.get(0).getReturnValue());
+	}
 }
