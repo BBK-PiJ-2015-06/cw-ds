@@ -74,7 +74,7 @@ public class StackImpl extends AbstractStack {
 	 */
 	public ReturnObject top() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
-		if(this.isEmpty() || this.isListNull()) {
+		if(this.isEmpty()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			output.setObject(this.internalList.get(this.size() - 1).getReturnValue());
@@ -92,7 +92,7 @@ public class StackImpl extends AbstractStack {
 	 */
 	public ReturnObject pop() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
-		if(this.isEmpty() || this.isListNull()) {
+		if(this.isEmpty()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
 			output.setObject(this.internalList.get(this.size() - 1).getReturnValue());
