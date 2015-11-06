@@ -64,14 +64,19 @@ public class TestFunctionalArrayList {
 		FunctionalList newList = list.rest();
 		assertEquals(2, newList.size());
 		assertEquals(3, list.size());
+		newList.add("Test");
 		
 		assertEquals("Object2", newList.get(0).getReturnValue());
 		assertEquals("Object3", newList.get(1).getReturnValue());
-		assertEquals(null, newList.get(2).getReturnValue());
+		assertEquals("Test", newList.get(2).getReturnValue());
+		assertEquals(null, newList.get(3).getReturnValue());
 		
 		assertEquals("Object1", list.get(0).getReturnValue());
 		assertEquals("Object2", list.get(1).getReturnValue());
 		assertEquals("Object3", list.get(2).getReturnValue());
 		assertEquals(null, list.get(3).getReturnValue());
+		
+		assertEquals(3, newList.size());
+		assertEquals(3, list.size());
 	}
 }
