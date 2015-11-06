@@ -18,9 +18,7 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 	public SampleableList sample() {
 		SampleableListImpl newList = new SampleableListImpl();
 		int size = this.size();
-		if(size == 0) {
-			newList.setList(this.getList());
-		} else {
+		if(size > 0) {
 			Object[] temp = new Object[(size / 2) + (size % 2)];
 			int j = 0; // uses j as an additional counter to count through indicies of original list.
 			
