@@ -42,9 +42,7 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
      */
     public FunctionalList rest() {
 		FunctionalArrayList output = new FunctionalArrayList(); //New list created in order to preserve original
-		if(this.isEmpty()) {
-			output.setList(this.getList());
-		} else {
+		if(this.size() > 1) {
 			Object[] temp = new Object[this.size() - 1];
 			for(int i = 0; i < this.size() - 1; i++) {
 				temp[i] = this.getList()[i + 1];
