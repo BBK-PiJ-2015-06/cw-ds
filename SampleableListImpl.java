@@ -1,13 +1,14 @@
 /**
+ * Solution to Part 6 of Assignment 2, PiJ 2015
  * A sampleable list can be sampled. 
- * 
- * @author PiJ
  */
 public class SampleableListImpl extends ArrayList implements SampleableList {
 	
+	//Constructor method calls constructor from parent class ArrayList
 	public SampleableListImpl() {
 		super();
 	}
+	
 	/**
 	 * Returns a list containing the first, third, fifth...
 	 * items of this list, or an empty list if the list is empty. 
@@ -21,9 +22,9 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 			newList.setList(this.getList());
 		} else {
 			Object[] temp = new Object[(size / 2) + (size % 2)];
-			int j = 0;
+			int j = 0; // uses j as an additional counter to count through indicies of original list.
 			
-			// i initialised to 0.
+			// j initialised to 0.
 			// Assumes first, third, fifth items (as mentioned above) takes the literal
 			// first, third and fifth elements, NOT index 1, index 3, index 5...etc.
 			for(int i = 0; i < temp.length; i++) { 
@@ -34,4 +35,5 @@ public class SampleableListImpl extends ArrayList implements SampleableList {
 		}
 		return newList;
 	}
+	
 }
