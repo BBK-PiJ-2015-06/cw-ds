@@ -15,6 +15,9 @@ public class TestSampleableListImpl {
 		SampleableList newList = list.sample();
 		assertEquals(0, newList.size());
 		assertEquals(null, newList.get(0).getReturnValue());
+		newList.add(5);
+		assertEquals(0, list.size());
+		assertEquals(1, newList.size());
 	}
 	
 	@Test 
