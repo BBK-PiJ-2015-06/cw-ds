@@ -275,6 +275,9 @@ public class TestImprovedStackImpl {
 		assertEquals(0, reversed.size());
 		assertTrue(reversed.isEmpty());
 		assertEquals(null, reversed.top().getReturnValue());
+		reversed.push(1);
+		assertEquals(1, reversed.size());
+		assertEquals(0, stack3.size());
 	}
 	
 	@Test
@@ -300,6 +303,14 @@ public class TestImprovedStackImpl {
 		assertFalse(reversed.isEmpty());
 		assertEquals("Hello", reversed.top().getReturnValue());
 		assertEquals("Bye!", doubleStack.top().getReturnValue());
+	}
+	
+	@Test
+	public void testsReverseChangesDoNotAffectOriginal() {
+		ImprovedStack newStack = stack1.reverse();
+		newStack.push(1);
+		assertEquals(6, newStack.size());
+		assertEquals(5, stack1.size());
 	}
 	
 	
