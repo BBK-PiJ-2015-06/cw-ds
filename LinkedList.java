@@ -8,7 +8,7 @@
  * different types and there is no limit to the number of elements
  * in the list.
  *
- * Each element in sorted with respect to its index in the list. The
+ * Each element is sorted with respect to its index in the list. The
  * first element is at index 0, then index 1 and so on. The list is not
  * sorted based upon the individual elements as these can take on a variety
  * of types.
