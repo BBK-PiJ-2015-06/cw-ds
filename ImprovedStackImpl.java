@@ -92,7 +92,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		} else {
 			ArrayList reverseList = new ArrayList();
 			for(int index = (this.size() - 1); index >= 0; index--) {
-				reverseList.add(index);
+				reverseList.add(this.stackList.get(index).getReturnValue());
 			}
 			ImprovedStackImpl newStack = new ImprovedStackImpl(reverseList);
 			return newStack;
