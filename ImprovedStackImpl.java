@@ -57,7 +57,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		if(this.isEmpty()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			output.setObject(this.stackList.get(this.size() - 1));
+			output.setObject(this.stackList.get(this.size() - 1).getReturnValue());
 		}
 		return output;
 	}
@@ -74,7 +74,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		if(this.isEmpty()) {
 			output.setError(ErrorMessage.EMPTY_STRUCTURE);
 		} else {
-			output.setObject(this.stackList.get(this.size() - 1));
+			output.setObject(this.stackList.get(this.size() - 1).getReturnValue());
 			this.stackList.remove(this.size() - 1);
 		}
 		return output;
