@@ -29,6 +29,7 @@ public class TestSampleableListImpl {
 		assertEquals(1, newList.get(0).getReturnValue());
 		assertEquals(55, newList.get(1).getReturnValue());
 		assertEquals(40, newList.get(2).getReturnValue());
+		newList.add("Test");
 		assertEquals(5, list.size()); //Tests that original list is not changed.
 	}
 }
