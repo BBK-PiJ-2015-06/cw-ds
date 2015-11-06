@@ -47,7 +47,10 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 		} else {
 			for(int index = 1; index < this.size(); index++) {
 				newList.add(this.get(index).getReturnValue());
-			}
+			} 										/* iteratively re-adding elements to new list. 
+													 * Cannot simply repoint new list starter node to next object as 
+													 * this won't preserve original if changes are made in the new list.
+													 */
 		}
 		return newList;
 	}
