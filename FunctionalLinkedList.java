@@ -41,17 +41,17 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
      * If the FunctionalLinkedList is empty, another empty list is returned. 
      */
     public FunctionalList rest() {
-		FunctionalLinkedList newList = new FunctionalLinkedList(); //New list created in order to preserve original 
+		FunctionalLinkedList output = new FunctionalLinkedList(); //New list created in order to preserve original 
 		if(this.size() > 1) {
 			/* iteratively re-adding elements to new list. 
 			 * Cannot simply repoint new list starter node to next object as 
 			 * this won't preserve original if changes are made in the new list.
 			 */
 			for(int index = 1; index < this.size(); index++) {
-				newList.add(this.get(index).getReturnValue());
+				output.add(this.get(index).getReturnValue());
 			} 										
 		}
-		return newList;
+		return output;
 	}
 													
 }
