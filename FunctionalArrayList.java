@@ -1,30 +1,27 @@
 /**
- * A functional list is a list with a few additional methods that are
- * common in functional languages (such as Lisp, Clojure, or Haskell)
- * to work with lists in a recursive way. 
+ * Solution to Part 4 of Assignment 2, PiJ 2015
+ * A FunctionalArrayList implements FunctionalList and extends
+ * ArrayList with the addition of methods that enable the 
+ * ArrayList to be utilised in a recursive manner. 
  *
- * Not all operations on a recursive list will always be
- * successful. For example, a programmer may try to extract the head
- * from an empty list. Since we hace not covered exceptions yet, we
- * need another mechanism to report errors. In order to do that,
- * methods of this list will return a {@see ReturnObject} that will
- * contain either an object or an error value of the right kind (as
- * defined in {@see ErrorMessage}).
- * 
- * @author PiJ
+ * These additional methods enable the first element (index 0) 
+ * and / or the body (index 1, index 2...index(size - 1)) to be 
+ * retrieved with no chnage being inflicted upon the original structure.
  */
 public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	
+	//Constructor method calls constructor from parent class ArrayList
 	public FunctionalArrayList() {
 		super();
 	}
+	
     /**
-     * Returns the element at the beginning of the list. 
+     * Returns the element at the beginning of the FunctionalArrayList. 
      * 
-     * If the list is empty, an appropriate error is returned. 
+     * If the structure is empty, an EMPTY_STRUCTURE ErrorMessage is returned. 
      *
-     * @return a copy of the element at the beginning of the list or 
-     *         an error if the list is empty.
+     * @return ReturnObject which holds a copy of the element at the beginning 
+	 *         of the FunctionalArrayList or an error if the list is empty.
      */
     public ReturnObject head() {
 		ReturnObjectImpl output = new ReturnObjectImpl();
@@ -37,14 +34,14 @@ public class FunctionalArrayList extends ArrayList implements FunctionalList {
 	}
 
     /**
-     * Returns a list with the elements in this list except the
-     * head. The elements must be in the same order. The original list
-     * must not change or be affected by changes in the new list. 
+     * Returns a FunctionalList with the elements in this list except the
+     * head. The elements remain in the same order. The original list
+     * is not changed or affected by changes in the new list. 
      * 
-     * If the list is empty, another empty list is returned. 
+     * If the FunctionalArrayList is empty, another empty list is returned. 
      */
     public FunctionalList rest() {
-		FunctionalArrayList output = new FunctionalArrayList();
+		FunctionalArrayList output = new FunctionalArrayList(); //New list created in order to preserve original
 		if(this.isEmpty()) {
 			output.setList(this.getList());
 		} else {
