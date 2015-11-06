@@ -43,9 +43,11 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
     public FunctionalList rest() {
 		FunctionalLinkedList newList = new FunctionalLinkedList(); //New list created in order to preserve original 
 		if(this.isEmpty()) {
-			newList.setList(this.getList());
+			newList.setList(null);
 		} else {
-			newList.setList(this.getList().getNext());
+			for(int index = 1; index < this.size(); index++) {
+				newList.add(this.get(index).getReturnValue());
+			}
 		}
 		return newList;
 	}
