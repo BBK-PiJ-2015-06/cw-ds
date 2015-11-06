@@ -8,9 +8,11 @@
 
 public class ReturnObjectImpl implements ReturnObject {
 	
+	//Fields
 	private Object object;
 	private ErrorMessage error;
 	
+	//Constructor method instantiates fields to null as default value.
 	public ReturnObjectImpl() {
 		this.object = null;
 		this.error = null;
