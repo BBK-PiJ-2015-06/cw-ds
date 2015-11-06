@@ -1,4 +1,5 @@
 /**
+ * Solution to Part 7 of Assignment 2, PiJ 2015
  * A StackImpl is an implementation of a stack that extends 
  * AbstractStack and uses a {@List} as the underlying data 
  * structure (ArrayList or LinkedList).
