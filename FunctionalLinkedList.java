@@ -43,7 +43,8 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
     public FunctionalList rest() {
 		FunctionalLinkedList output = new FunctionalLinkedList(); //New list created in order to preserve original 
 		if(this.size() > 1) {
-			/* iteratively re-adding elements to new list. 
+			/* 
+			 * iteratively re-adding elements to new list. 
 			 * Cannot simply repoint new list starter node to next object as 
 			 * this won't preserve original if changes are made in the new list.
 			 */
