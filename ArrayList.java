@@ -100,11 +100,7 @@ public class ArrayList implements List {
 				temp[i - 1] = this.list[i];
 			}
 			this.list = temp;
-		}                             /* creates a new temporary object array
-		                               * fills it with the current object array,
-									   * except skips the element at the index specified to remove,
-									   * hence why two separate for loops are used.
-		                               */
+		}   
 		return output;
 	}
 
@@ -142,12 +138,7 @@ public class ArrayList implements List {
 				temp[i] = this.list[i-1];
 			}
 			this.list = temp;
-		}								/*
-										 * Uses same principle as in remove() method
-										 * except this time a new empty slot is created
-										 * in the array at the index provided position for
-										 * the new Object item to be inserted.
-										*/
+		}								
 		return output;
 	}
 
